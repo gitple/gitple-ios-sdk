@@ -9,7 +9,7 @@
 import UIKit
 import GitpleSDK
 
-let GITPLE_APPCODE = "xxxxxxxxxxxxxxxxxx"
+let GITPLE_APPCODE = "Your appCode"
 
 class ViewController: UIViewController {
     

@@ -21,7 +21,7 @@
 
 @synthesize gitpleViewController;
 
-#define GITPLE_APPCODE @"xxxxxxxxxxxxxxxxxx"
+#define GITPLE_APPCODE @"Your appCode"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
