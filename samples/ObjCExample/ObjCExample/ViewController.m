@@ -37,6 +37,7 @@
     (void)[gitpleUser setNameWithName:@"iosobjcuser01"];
     (void)[gitpleUser setPhoneWithPhone:@"0000000000"];
     (void)[gitpleUser setMetaWithKey:@"company" value:@"gitple"];
+    (void)[gitpleUser setMetaWithKey:@"order" value:@"gitple"];
     
     [Gitple unreadCount];
 }
@@ -55,24 +56,25 @@
 }
 
 - (void)onViewLaunchedWithSender:(GitpleViewController * _Nonnull)sender {
-    NSLog(@"onWebviewLaunchedWithSender");
+    NSLog(@"onViewLaunchedWithSender");
     
     self.gitpleViewController = sender;
-
+    
+    self.gitpleViewController.navigationItem.title = @"채팅 서비스";
+    
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"닫기"
                                                              style:UIBarButtonItemStyleDone
                                                             target:self
-                                                            action:@selector(done:)];
+                                                            action:@selector(closeGitple:)];
     self.gitpleViewController.navigationItem.rightBarButtonItem = item;
-    self.gitpleViewController.navigationItem.title = @"채팅 서비스";
 }
 
 - (void)onUnreadCountWithCount:(NSInteger)count {
     NSLog(@"onUnreadCount cunt:%i", (int)count);
 }
 
-- (void)done:(UIBarButtonItem*)sender {
-    NSLog(@"done");
+- (void)closeGitple:(UIBarButtonItem*)sender {
+    NSLog(@"closeGitple");
     
     [[self navigationController] dismissViewControllerAnimated:true completion:nil];
 }

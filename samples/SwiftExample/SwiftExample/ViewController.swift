@@ -27,6 +27,7 @@ class ViewController: UIViewController {
                      .setName(name: "iosswiftuser01")
                      .setPhone(phone: "0000000000")
                      .setMeta(key: "company", value: "gitple")
+                     .setMeta(key: "order", value: "gitple")
         
         Gitple.unreadCount()
         
@@ -45,21 +46,21 @@ class ViewController: UIViewController {
 
 extension ViewController : GitpleDelegate {
     func onViewLaunched(sender: GitpleViewController) {
-        print("onWebviewLaunched")
+        print("onViewLaunched")
         self.gitpleViewController = sender
         
-        let newBackButton = UIBarButtonItem(title: "닫기", style: UIBarButtonItemStyle.done, target: self, action: #selector(ViewController.done))
-        self.gitpleViewController!.navigationItem.rightBarButtonItem = newBackButton;
         self.gitpleViewController!.navigationItem.title = "채팅 서비스";
         
+        let newBackButton = UIBarButtonItem(title: "닫기", style: UIBarButtonItemStyle.done, target: self, action: #selector(ViewController.closeGitple))
+        self.gitpleViewController!.navigationItem.rightBarButtonItem = newBackButton;
     }
     
     func onUnreadCount(count: Int) {
         print("onUnreadCount count: \(count)")
     }
     
-    @objc func done(sender: UIBarButtonItem) {
-        print("done")
+    @objc func closeGitple(sender: UIBarButtonItem) {
+        print("closeGitple")
         self.navigationController!.dismiss(animated: true, completion: nil)
     }
 }
