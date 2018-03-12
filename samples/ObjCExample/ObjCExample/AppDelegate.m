@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <GitpleSDK/GitpleSDK-Swift.h>
+
+#define GITPLE_APPCODE @"Your appCode"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Gitple initializeWithAppCode:GITPLE_APPCODE];
+    
     return YES;
 }
 

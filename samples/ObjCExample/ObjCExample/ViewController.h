@@ -7,15 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GitpleSDK/GitpleSDK-Swift.h>
 
-@interface ViewController : UIViewController<GitpleDelegate> {
-    GitpleViewController* _gitpleViewController;
-}
-
-- (IBAction)startChatButton:(id)sender;
-
-@property (nonatomic, retain) GitpleViewController *gitpleViewController;
+@interface ViewController : UIViewController
 
 @end
 

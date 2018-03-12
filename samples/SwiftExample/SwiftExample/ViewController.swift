@@ -9,8 +9,6 @@
 import UIKit
 import GitpleSDK
 
-let GITPLE_APPCODE = "Your appCode"
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var chatStartButton: UIButton!
@@ -20,22 +18,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Gitple.initialize(appCode: GITPLE_APPCODE)
-        
-        
-        Gitple.config().setHideHeader(isHide: true);
-        
         Gitple.delegate = self
         
         Gitple.config().setHideHeader(isHide: true);
         
         Gitple.user().setId(id: "iosswiftuser01")
-            .setEmail(email: "iosswiftuser01@gitple")
-            .setName(name: "iosswiftuser01")
-            .setPhone(phone: "0000000000")
-            .setMeta(key: "metaKey1", value: "metaValue1")
-            .setMeta(key: "metaKey2", value: "metaValue2")
-            .setMeta(key: "metaKey3", value: "metaValue4")
+                     .setEmail(email: "iosswiftuser01@gitple")
+                     .setName(name: "iosswiftuser01")
+                     .setPhone(phone: "0000000000")
+                     .setMeta(key: "company", value: "gitple")
         
         Gitple.unreadCount()
         
@@ -59,6 +50,7 @@ extension ViewController : GitpleDelegate {
         
         let newBackButton = UIBarButtonItem(title: "닫기", style: UIBarButtonItemStyle.done, target: self, action: #selector(ViewController.done))
         self.gitpleViewController!.navigationItem.rightBarButtonItem = newBackButton;
+        self.gitpleViewController!.navigationItem.title = "채팅 서비스";
         
     }
     

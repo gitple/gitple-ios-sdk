@@ -9,38 +9,36 @@
 #import "ViewController.h"
 #import <GitpleSDK/GitpleSDK-Swift.h>
 
-//@interface ViewController : UIViewController<GitpleDelegate> {
-//    GitpleViewController* _gitpleViewController;
-//}
-//
-//
-//@property (nonatomic, retain) GitpleViewController *gitpleViewController;
+@interface ViewController () <GitpleDelegate> {
+    GitpleViewController* _gitpleViewController;
+}
 
+- (IBAction)startChatButton:(id)sender;
+
+@property (nonatomic, retain) GitpleViewController *gitpleViewController;
+
+@end
 
 @implementation ViewController
 
 @synthesize gitpleViewController;
 
-#define GITPLE_APPCODE @"Your appCode"
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [Gitple initializeWithAppCode:GITPLE_APPCODE];
-    
-    [[Gitple config] setHideHeaderWithIsHide:true];
-    
     [Gitple setDelegate:self];
-    
-    [[[[[[[[Gitple user]
-            setIdWithId:@"iosobjcuser01"]
-            setEmailWithEmail:@"iosobjcuser01@gitple"]
-            setNameWithName:@"iosobjcuser01"]
-            setPhoneWithPhone:@"0000000000"]
-            setMetaWithKey:@"metaKey1" value:@"metaValue1"]
-            setMetaWithKey:@"metaKey2" value:@"metaValue2"]
-            setMetaWithKey:@"metaKey3" value:@"metaValue4"];
 
+    (void)[[Gitple config] setHideHeaderWithIsHide:true];
+    
+    GitpleUser *gitpleUser = [Gitple user];
+    
+    (void)[gitpleUser setIdWithId:@"iosobjcuser01"];
+    (void)[gitpleUser setEmailWithEmail:@"iosobjcuser01@gitple"];
+    (void)[gitpleUser setNameWithName:@"iosobjcuser01"];
+    (void)[gitpleUser setPhoneWithPhone:@"0000000000"];
+    (void)[gitpleUser setMetaWithKey:@"company" value:@"gitple"];
+    
+    [Gitple unreadCount];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,12 +58,17 @@
     NSLog(@"onWebviewLaunchedWithSender");
     
     self.gitpleViewController = sender;
-    
+
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"닫기"
                                                              style:UIBarButtonItemStyleDone
                                                             target:self
                                                             action:@selector(done:)];
     self.gitpleViewController.navigationItem.rightBarButtonItem = item;
+    self.gitpleViewController.navigationItem.title = @"채팅 서비스";
+}
+
+- (void)onUnreadCountWithCount:(NSInteger)count {
+    NSLog(@"onUnreadCount cunt:%i", (int)count);
 }
 
 - (void)done:(UIBarButtonItem*)sender {
