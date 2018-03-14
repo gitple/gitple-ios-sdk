@@ -30,16 +30,24 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="fm3-RI-3Vq"/>
                                     <constraint firstAttribute="width" constant="80" id="ioR-Sg-Imc"/>
                                 </constraints>
-                                <state key="normal" title="상담 시작"/>
+                                <state key="normal" title="Start Chat"/>
                                 <connections>
                                     <action selector="startChatButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uBt-oh-4B8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gitple ObjC Example" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3e-1v-0Qp">
+                                <rect key="frame" x="108.5" y="323" width="157.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="i3e-1v-0Qp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="83C-te-CW9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jMy-Ms-0Ml" secondAttribute="trailing" constant="15" id="FTv-vS-FHi"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jMy-Ms-0Ml" secondAttribute="bottom" constant="15" id="Mdx-IW-9LS"/>
+                            <constraint firstItem="i3e-1v-0Qp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="afE-n6-V0O"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="asN-gN-Igk"/>

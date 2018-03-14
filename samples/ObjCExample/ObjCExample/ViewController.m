@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <GitpleSDK/GitpleSDK-Swift.h>
+#import <OneSignal/OneSignal.h>
 
 @interface ViewController () <GitpleDelegate> {
     GitpleViewController* _gitpleViewController;
@@ -39,6 +40,13 @@
     (void)[gitpleUser setMetaWithKey:@"company" value:@"gitple"];
     (void)[gitpleUser setMetaWithKey:@"order" value:@"gitple"];
     
+    // sendTags for OneSignal : {"gp": "userId"}
+    [OneSignal sendTags:@{@"gp" : @"iosobjcuser01"} onSuccess:^(NSDictionary *result) {
+        NSLog(@"success!");
+    } onFailure:^(NSError *error) {
+        NSLog(@"Error - %@", error.localizedDescription);
+    }];
+    
     [Gitple unreadCount];
 }
 
@@ -60,9 +68,9 @@
     
     self.gitpleViewController = sender;
     
-    self.gitpleViewController.navigationItem.title = @"채팅 서비스";
+    self.gitpleViewController.navigationItem.title = @"Gitple";
     
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"닫기"
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                              style:UIBarButtonItemStyleDone
                                                             target:self
                                                             action:@selector(closeGitple:)];

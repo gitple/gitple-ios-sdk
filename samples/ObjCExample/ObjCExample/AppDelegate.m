@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <GitpleSDK/GitpleSDK-Swift.h>
+#import <OneSignal/OneSignal.h>
 
 #define GITPLE_APPCODE @"Your appCode"
 
@@ -20,7 +21,48 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Initialize Gitple
     [Gitple initializeWithAppCode:GITPLE_APPCODE];
+    
+    // OneSignal(Optional) - Eanble logging to help debug issues. visualLevel will show alert dialog boxes.
+    // Remove setLogLevel in the production version of your app.
+    [OneSignal setLogLevel:ONE_S_LL_VERBOSE visualLevel:ONE_S_LL_WARN];
+    
+    // OneSignal(Optional) - Create block the will fire when a notification is recieved while the app is in focus.
+    id notificationRecievedBlock = ^(OSNotification *notification) {
+        NSLog(@"Received Notification - %@", notification.payload.notificationID);
+    };
+    
+    // OneSignal(Optional) - Create block that will fire when a notification is tapped on.
+    id notificationOpenedBlock = ^(OSNotificationOpenedResult *result) {
+        OSNotificationPayload* payload = result.notification.payload;
+        
+        NSString* messageTitle = @"Gitple";
+        NSString* fullMessage = [payload.body copy];
+        
+        if (payload.additionalData) {
+            if ([payload.additionalData[@"from"] isEqualToString: @"gp"]) {
+                NSLog(@"notification from gitple");
+            }
+        }
+    };
+    
+    // OneSignal(Optional) - Configuration options for OneSignal settings.
+    id oneSignalSetting = @{kOSSettingsKeyInFocusDisplayOption : @(OSNotificationDisplayTypeNotification), kOSSettingsKeyAutoPrompt : @YES};
+    
+    // OneSignal - Initialize
+    // Replace appId with your OneSignal App ID.
+    [OneSignal initWithLaunchOptions:launchOptions
+                               appId:@"YOUR_ONESIGNAL_APP_ID"
+            handleNotificationAction:nil
+                            settings:@{kOSSettingsKeyAutoPrompt: @false}];
+    
+    // OneSignal - Recommend moving the below line to prompt for push after informing the user about
+    //   how your app will use them.
+    [OneSignal promptForPushNotificationsWithUserResponse:^(BOOL accepted) {
+        NSLog(@"User accepted notifications: %d", accepted);
+    }];
     
     return YES;
 }

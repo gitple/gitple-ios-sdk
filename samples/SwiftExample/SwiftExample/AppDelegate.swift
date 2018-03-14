@@ -8,6 +8,7 @@
 
 import UIKit
 import GitpleSDK
+import OneSignal
 
 let GITPLE_APPCODE = "Your appCode"
 
@@ -19,7 +20,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Initialize Gitple
         Gitple.initialize(appCode: GITPLE_APPCODE)
+        
+        // OneSignal: For debugging
+        //OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+        
+        // OneSignal: Called when a notification is received while your app is in focus only
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+            
+            print("Received Notification: \(notification!.payload.notificationID)")
+            print("launchURL = \(notification?.payload.launchURL ?? "None")")
+            print("content_available = \(notification?.payload.contentAvailable ?? false)")
+        }
+        
+        // OneSignal: This will be called when a notification is tapped on
+        let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+            // This block gets called when the user reacts to a notification received
+            let payload: OSNotificationPayload? = result?.notification.payload
+            
+            print("Message = \(payload!.body)")
+            print("badge number = \(payload?.badge ?? 0)")
+            print("notification sound = \(payload?.sound ?? "None")")
+            
+            if let additionalData = result!.notification.payload!.additionalData {
+                print("additionalData = \(additionalData)")
+                
+                // notification by Gitple
+                
+            }
+        }
+        
+        // OneSignal: Initialize
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        
+        // OneSignal: Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: "YOUR_ONESIGNAL_APP_ID",
+                                        handleNotificationReceived: notificationReceivedBlock,
+                                        handleNotificationAction: notificationOpenedBlock,
+                                        settings: onesignalInitSettings)
+        
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        
+        // OneSignal: Recommend moving the below line to prompt for push after informing the user about
+        //   how your app will use them.
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            print("User accepted notifications: \(accepted)")
+        })
+        
         return true
     }
 

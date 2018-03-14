@@ -8,6 +8,13 @@ target 'ObjCExample' do
   # Pods for ObjCExample
   pod 'Gitple'
 
+  # Pods for OneSignal
+  pod 'OneSignal', '>= 2.6.2', '< 3.0'
+  
+  target 'OneSignalNotificationServiceExtension' do
+    pod 'OneSignal', '>= 2.6.2', '< 3.0'
+  end
+
   target 'ObjCExampleTests' do
     inherit! :search_paths
     # Pods for testing

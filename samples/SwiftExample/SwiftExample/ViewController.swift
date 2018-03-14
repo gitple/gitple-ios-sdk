@@ -8,10 +8,13 @@
 
 import UIKit
 import GitpleSDK
+import OneSignal
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var chatStartButton: UIButton!
+    
+    let label = UILabel()
     
     private var gitpleViewController: GitpleViewController? = nil
     
@@ -31,6 +34,17 @@ class ViewController: UIViewController {
         
         Gitple.unreadCount()
         
+        // sendTags for OneSignal : {"gp": "userId"}
+        let tags: [AnyHashable : Any] = [
+            "gp" : "iosswiftuser01"
+        ]
+        
+        OneSignal.sendTags(tags, onSuccess: { result in
+            print("Tags sent - \(result!)")
+        }) { error in
+            print("Error sending tags: \(error?.localizedDescription ?? "None")")
+        }
+                
         chatStartButton.addTarget(self, action: #selector(ViewController.onChatStartButtonClicked), for: UIControlEvents.touchUpInside)
     }
     
@@ -49,9 +63,9 @@ extension ViewController : GitpleDelegate {
         print("onViewLaunched")
         self.gitpleViewController = sender
         
-        self.gitpleViewController!.navigationItem.title = "채팅 서비스";
+        self.gitpleViewController!.navigationItem.title = "Gitple";
         
-        let newBackButton = UIBarButtonItem(title: "닫기", style: UIBarButtonItemStyle.done, target: self, action: #selector(ViewController.closeGitple))
+        let newBackButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(ViewController.closeGitple))
         self.gitpleViewController!.navigationItem.rightBarButtonItem = newBackButton;
     }
     

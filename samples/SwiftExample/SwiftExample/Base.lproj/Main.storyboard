@@ -15,8 +15,8 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" userLabel="Root View Controller" customClass="ViewController" customModule="SwiftExample" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="SFf-tj-FV6"/>
+                        <viewControllerLayoutGuide type="bottom" id="dGt-je-8va"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -30,13 +30,22 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="fm3-RI-3Vq"/>
                                     <constraint firstAttribute="width" constant="80" id="ioR-Sg-Imc"/>
                                 </constraints>
-                                <state key="normal" title="상담 시작"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Start Chat"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gitple Swift Example" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4M-09-OCe">
+                                <rect key="frame" x="97.5" y="321.5" width="179" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="jMy-Ms-0Ml" secondAttribute="trailing" constant="15" id="FTv-vS-FHi"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jMy-Ms-0Ml" secondAttribute="bottom" constant="15" id="Mdx-IW-9LS"/>
+                            <constraint firstItem="dGt-je-8va" firstAttribute="top" secondItem="jMy-Ms-0Ml" secondAttribute="bottom" constant="15" id="Mdx-IW-9LS"/>
+                            <constraint firstItem="R4M-09-OCe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dln-To-i8R"/>
+                            <constraint firstItem="R4M-09-OCe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gjV-xm-9oP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="asN-gN-Igk"/>
@@ -46,6 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="33.733133433283363"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nGx-Ms-l1z">

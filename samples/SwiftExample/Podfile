@@ -8,6 +8,13 @@ target 'SwiftExample' do
   # Pods for SwiftExample
   pod 'Gitple'
 
+  # Pods for Onesignal
+  pod 'OneSignal', '>= 2.7.1', '< 3.0'
+
+  target 'OneSignalNotificationServiceExtension' do
+    pod 'OneSignal', '>= 2.7.1', '< 3.0'
+  end
+
   target 'SwiftExampleTests' do
     inherit! :search_paths
     # Pods for testing
