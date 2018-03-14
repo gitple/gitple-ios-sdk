@@ -20,7 +20,7 @@ When installing Gitple, you'll need to make sure that you have a `NSPhotoLibrary
 
 ## Examples
 
-### Swift
+#### Swift
 
 - Go to ./samples/SwiftExample
 - Run `pod install` in terminal
@@ -29,10 +29,39 @@ When installing Gitple, you'll need to make sure that you have a `NSPhotoLibrary
 - Build and Run
 - [Swift sdk docs](http://guide.gitple.io/#/swift-sdk)
 
-## Objective-C
+### Objective-C
 - Go to ./samples/ObjeCExample
 - Run `pod install` in terminal
 - open `ObjCExample.xcworkspace`
 - Set your `GITPLE_APPCODE` at the `ViewController.m`
 - Build and Run
 - [Objective-C sdk docs](http://guide.gitple.io/#/ios-sdk)
+
+
+## OneSignal Push Notification
+
+OneSignal is push notification service for websites and mobile([Homepage](https://onesignal.com))
+
+1. Create OneSignal account if you do not already have one
+2. Setup OneSignal App ID
+
+    - **Swift** : `AppDelegate.swift`
+    ```
+    // OneSignal: Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
+    OneSignal.initWithLaunchOptions(launchOptions,
+                                    appId: "YOUR_ONESIGNAL_APP_ID",
+                                    handleNotificationReceived: notificationReceivedBlock,
+                                    handleNotificationAction: notificationOpenedBlock,
+                                    settings: onesignalInitSettings)
+    ```
+
+    - **Objective-C** : `AppDelegate.m`
+    ```
+    // Replace appId with your OneSignal App ID.
+    [OneSignal initWithLaunchOptions:launchOptions
+                               appId:@"YOUR_ONESIGNAL_APP_ID"
+            handleNotificationAction:nil
+                            settings:@{kOSSettingsKeyAutoPrompt: @false}];
+    ```
+
+3. Reference : [OneSignal setup for iOS](https://documentation.onesignal.com/docs/ios-sdk-setup)
