@@ -15,6 +15,7 @@
 }
 
 - (IBAction)startChatButton:(id)sender;
+- (IBAction)getUnreadCountButton:(id)sender;
 
 @property (nonatomic, retain) GitpleViewController *gitpleViewController;
 
@@ -46,8 +47,6 @@
     } onFailure:^(NSError *error) {
         NSLog(@"Error - %@", error.localizedDescription);
     }];
-    
-    [Gitple unreadCount];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,11 +55,16 @@
     
 }
 
-
 - (IBAction)startChatButton:(id)sender {
     NSLog(@"startChatButton");
     
     [Gitple launch];
+}
+
+- (IBAction)getUnreadCountButton:(id)sender {
+    NSLog(@"getUnreadCountButton");
+    
+    [Gitple unreadCount];
 }
 
 - (void)onViewLaunchedWithSender:(GitpleViewController * _Nonnull)sender {
@@ -79,12 +83,28 @@
 
 - (void)onUnreadCountWithCount:(NSInteger)count {
     NSLog(@"onUnreadCount cunt:%i", (int)count);
+    NSString* message = [[NSString alloc] initWithFormat:@"Unread message count: %i", (int)count];
+    [self displayAlert:@"Gitple" withMessage:message actions:@[]];
 }
 
 - (void)closeGitple:(UIBarButtonItem*)sender {
     NSLog(@"closeGitple");
     
     [[self navigationController] dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)displayAlert:(NSString *)title withMessage:(NSString *)message actions:(NSArray<UIAlertAction *>*)actions {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        if (!actions || actions.count == 0) {
+            [controller addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:nil]];
+        } else {
+            for (UIAlertAction *action in actions) {
+                [controller addAction:action];
+            }
+        }
+        [self presentViewController:controller animated:true completion:nil];
+    });
 }
 @end
 

@@ -10,7 +10,7 @@ import UIKit
 import GitpleSDK
 import OneSignal
 
-let GITPLE_APPCODE = "Your appCode"
+let GITPLE_APPCODE = "GITPLE_APPCODE"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,11 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("badge number = \(payload?.badge ?? 0)")
             print("notification sound = \(payload?.sound ?? "None")")
             
+            // Gitple push message with additionalData : {"from":"gp"}
             if let additionalData = result!.notification.payload!.additionalData {
                 print("additionalData = \(additionalData)")
-                
-                // notification by Gitple
-                
             }
         }
         

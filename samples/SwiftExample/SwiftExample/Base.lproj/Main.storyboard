@@ -39,18 +39,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3r-fP-SOw">
+                                <rect key="frame" x="77.5" y="373.5" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="Gpb-ep-Id2"/>
+                                    <constraint firstAttribute="height" constant="40" id="z5R-w2-5NW"/>
+                                </constraints>
+                                <state key="normal" title="Get unread message count"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="C3r-fP-SOw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="60" id="AMY-kM-HeZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jMy-Ms-0Ml" secondAttribute="trailing" constant="15" id="FTv-vS-FHi"/>
                             <constraint firstItem="dGt-je-8va" firstAttribute="top" secondItem="jMy-Ms-0Ml" secondAttribute="bottom" constant="15" id="Mdx-IW-9LS"/>
                             <constraint firstItem="R4M-09-OCe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dln-To-i8R"/>
+                            <constraint firstItem="C3r-fP-SOw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fbm-0d-cfN"/>
                             <constraint firstItem="R4M-09-OCe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gjV-xm-9oP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="asN-gN-Igk"/>
                     <connections>
                         <outlet property="chatStartButton" destination="jMy-Ms-0Ml" id="Thk-Ie-OSm"/>
+                        <outlet property="getUnreadCountButton" destination="C3r-fP-SOw" id="oho-6P-yYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

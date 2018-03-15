@@ -41,13 +41,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzu-WL-M5l">
+                                <rect key="frame" x="77" y="373.5" width="220" height="40"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7hh-FJ-lZl"/>
+                                    <constraint firstAttribute="width" constant="220" id="ZNj-6H-igu"/>
+                                </constraints>
+                                <state key="normal" title="Get unread message count"/>
+                                <connections>
+                                    <action selector="getUnreadCountButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s6M-wg-qVZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="i3e-1v-0Qp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="83C-te-CW9"/>
+                            <constraint firstItem="Pzu-WL-M5l" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="60" id="8Sc-hn-ZGH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jMy-Ms-0Ml" secondAttribute="trailing" constant="15" id="FTv-vS-FHi"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jMy-Ms-0Ml" secondAttribute="bottom" constant="15" id="Mdx-IW-9LS"/>
                             <constraint firstItem="i3e-1v-0Qp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="afE-n6-V0O"/>
+                            <constraint firstItem="Pzu-WL-M5l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vjz-VQ-eyb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="asN-gN-Igk"/>

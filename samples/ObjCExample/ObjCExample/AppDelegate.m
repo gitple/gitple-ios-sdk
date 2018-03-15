@@ -10,7 +10,7 @@
 #import <GitpleSDK/GitpleSDK-Swift.h>
 #import <OneSignal/OneSignal.h>
 
-#define GITPLE_APPCODE @"Your appCode"
+#define GITPLE_APPCODE @"GITPLE_APPCODE"
 
 @interface AppDelegate ()
 
@@ -27,7 +27,7 @@
     
     // OneSignal(Optional) - Eanble logging to help debug issues. visualLevel will show alert dialog boxes.
     // Remove setLogLevel in the production version of your app.
-    [OneSignal setLogLevel:ONE_S_LL_VERBOSE visualLevel:ONE_S_LL_WARN];
+    // [OneSignal setLogLevel:ONE_S_LL_VERBOSE visualLevel:ONE_S_LL_WARN];
     
     // OneSignal(Optional) - Create block the will fire when a notification is recieved while the app is in focus.
     id notificationRecievedBlock = ^(OSNotification *notification) {
@@ -41,6 +41,7 @@
         NSString* messageTitle = @"Gitple";
         NSString* fullMessage = [payload.body copy];
         
+        // Gitple push message with additionalData : {"from":"gp"}
         if (payload.additionalData) {
             if ([payload.additionalData[@"from"] isEqualToString: @"gp"]) {
                 NSLog(@"notification from gitple");
