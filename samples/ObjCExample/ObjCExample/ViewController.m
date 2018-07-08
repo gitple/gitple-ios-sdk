@@ -30,7 +30,11 @@
     
     [Gitple setDelegate:self];
 
+    // Hide gitple header menu
     (void)[[Gitple config] setHideHeaderWithIsHide:true];
+    
+    // Set gitple user language
+    (void)[[Gitple config] setUserLangWithLang:@"en"];
     
     GitpleUser *gitpleUser = [Gitple user];
     
